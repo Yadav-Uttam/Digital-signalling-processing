@@ -1,0 +1,19 @@
+%linear convolution
+close all
+clear all
+clc
+a=input("enter sequence for x")                                                                                                                            
+b=input("sequence for h")
+m=length(a)
+n=length(b) 
+X=[x,zeros(1,m)]
+H=[h,zeros(1,m)]
+for i=1:n+m-1
+    y(i)=0
+    for j=1:m
+        if(i-j+1>0)
+            y(i)=y(i)+X(j)*H(i-j+1);
+        else
+        end
+    end
+end
