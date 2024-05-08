@@ -1,0 +1,24 @@
+clc
+close all
+N = input('enter the length');
+sequence = input('enter the sequence');
+sequence2 = input('enter the sequence');
+p=length(sequence);
+q=length(sequence2);
+Y=[sequence,zeros(1,N-p)];
+W=[sequence2,zeros(1,N-q)];
+for k=0:N-1
+    X(k+1)=0;
+    Z(k+1)=0;
+    for n=0:N-1
+        X(k+1)=X(k+1)+Y(n+1)*exp(((-1j)*2*pi*k*n)/N);
+        Z(k+1)=Z(k+1)+W(n+1)*exp(((-1j)*2*pi*k*n)/N);
+    end 
+end
+G=X.*Z
+for n=0:N-1
+    b(n+1)=0
+    for k=0:N-1
+        b(n+1)+b(n+1)+[G(k+1)*exp((1i*2*pi*k*n)/N)]/N:
+    end
+end
