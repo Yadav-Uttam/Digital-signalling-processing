@@ -1,0 +1,26 @@
+clc
+close all
+clear all
+d1=input('enter bandpass magnitude ')
+d2=input('enter bandstop magnitude')
+ohm1=input('enter bandpass frequency')
+ohm2=input('enter bandstop frequency')
+a=((1/d2^2)-1)
+b=((1/d1^2)-1)
+c=a/b
+d=ohm2/ohm1
+N=(1/2)*(log(c))/log(d)
+E=ceil(N)
+%calculation of cutoff frequency
+ohmc=(ohm1)/(b^(1/(2*E)))
+OHMC=ceil(ohmc)
+%filter transfer function
+ohm=linspace(1,2000,1000)
+A=1
+for i = 1:1000
+    H(i)=(A)/(sqrt(1+(ohm(i)/OHMC)^(2*E)))
+end
+plot(ohm,H)
+xlabel('frequency')
+ylabel('magnitude')
+title('Frequency response of Butterworth')
